@@ -21,9 +21,10 @@ async def on_ready():
 	channel = client.get_channel(GENERAL_CHANNEL_ID)
 
 	async for message in channel.history(limit=None):
-		if message.attachments:
-			attachment = message.attachments[0]
+		if message.attachments is None:
+			continue
 
+		for attachment in message.attachments:
 			if attachment.filename.endswith(('.jpg', '.png', '.gif')):
 				response = await attachment.read()
 
@@ -33,7 +34,6 @@ async def on_ready():
 				path, ext = os.path.splitext(path)
 				if ext == '.gif':
 					gifs.append(path)
-
 
 	await client.close()
 

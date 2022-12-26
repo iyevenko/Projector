@@ -1,7 +1,5 @@
 #!/bin/sh
-conda activate discord
 rm content/*
 python bot.py > /dev/null
-cd frontend
-npm run dev
+npm run dev  --prefix frontend
 echo script running
