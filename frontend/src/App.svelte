@@ -1,4 +1,7 @@
 <script>
+    import { HtmlTagHydration } from "svelte/internal";
+
+
   const videoModules = import.meta.glob("../../content/*.mp4");
 
   let videoPaths = [];
@@ -6,6 +9,8 @@
   for (const modulePath in videoModules) {
     videoModules[modulePath]().then(({ default: imageUrl }) => {
       videoPaths.push(imageUrl);
+      videoPaths.sort(() => (Math.random() > .5) ? 1 : -1);
+
       videoPaths = videoPaths;
     });
   }
@@ -18,6 +23,9 @@
   for (const modulePath in imageModulesPNG) {
     imageModulesPNG[modulePath]().then(({ default: imageUrl }) => {
       imagePaths.push(imageUrl);
+      imagePaths.sort(() => (Math.random() > .5) ? 1 : -1);
+
+      
       imagePaths = imagePaths;
     });
   }
@@ -26,23 +34,23 @@
   for (const modulePath in imageModulesJPG) {
     imageModulesJPG[modulePath]().then(({ default: imageUrl }) => {
       imagePaths.push(imageUrl);
+      imagePaths.sort(() => (Math.random() > .5) ? 1 : -1);
       imagePaths = imagePaths;
     });
   }
 
-  // console.log(imagePaths);
 
 
 </script>
 
 <body>
   <div class="gridbox">
-    {#each videoPaths as imageModule}
-      <video src="{imageModule}" class="image" type="video/mp4" playsinline muted autoplay loop/>
+    {#each videoPaths as gg}
+      <video src="{gg}" class="image" type="video/mp4" playsinline muted autoplay loop/>
     {/each}
 
-    {#each imagePaths as imageModule}
-      <img src="{imageModule}" class="image"/>
+    {#each imagePaths as hh}
+      <img src="{hh}" class="image"/>
     {/each}
   </div>
 </body>
