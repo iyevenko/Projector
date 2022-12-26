@@ -1,6 +1,9 @@
 import discord
 import os
 
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+
+
 intents = discord.Intents()
 intents.messages = True
 intents.message_content = True
@@ -18,5 +21,4 @@ async def on_message(message):
 	        response = await attachment.read()
 	        open('./content/' + attachment.filename, 'wb').write(response)
 
-BOT_TOKEN = "MTA1NjcyNDc4NDMwNzc3NzYxNw.GiTIQL.Mh3ILmlnC1WYNtRf6CEbP5n6x-q6Gmf-fDw8w8"
 client.run(BOT_TOKEN)
