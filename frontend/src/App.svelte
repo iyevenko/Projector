@@ -38,7 +38,7 @@
 <body>
   <div class="gridbox">
     {#each videoPaths as imageModule}
-      <video src="{imageModule}" class="image" type="video/mp4" autoplay loop/>
+      <video src="{imageModule}" class="image" type="video/mp4" playsinline muted autoplay loop/>
     {/each}
 
     {#each imagePaths as imageModule}
@@ -67,10 +67,6 @@
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
 
-  /* display: grid;
-  gap: 5px; */
-  /* overflow: hidden; */
-
 
  }
  .image{
@@ -78,23 +74,20 @@
   align-items: left;
   object-fit: contain;
   height: 150px;
-  /* width: 200px; */
   margin: 0px;
   padding: 0px;
-  /* height: 100%;
-  width: 100%; */
-  /* flex-basis: 0; */
-  /* flex-shrink: 1; */
-  /* flex-grow: 1; */
-  /* flex-grow: 1;
-  flex-wrap: wrap;
-  /* flex-basis: auto;
-  flex-shrink: 1; */
+
+ }
+
+ .image{
+  justify-content: left;
+  align-items: left;
+  object-fit: contain;
+  height: 150px;
+  margin: 0px;
+  padding: 0px;
+
  }
 
  
-
- .gif {
-    -webkit-transform: rotateX(0);
-}
 </style>
